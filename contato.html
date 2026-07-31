@@ -1,99 +1,213 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagem 💌</title>
+
+    <title>Mensagem para mim ❤️</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="header">
-    <a href="index.html" class="logo">
-        Nosso <span>Match</span> ❤️
-    </a>
+    <!-- CABEÇALHO -->
 
-    <button class="header-heart" onclick="mostrarAmor()">💌</button>
-</header>
+    <header class="header">
 
-<main class="page">
+        <a href="index.html" class="logo">
+            Nosso <span>Match</span> ❤️
+        </a>
 
-    <section class="page-title">
-        <div class="page-emoji">💌</div>
+        <a href="index.html" class="header-heart">
+            🏠
+        </a>
 
-        <p class="small-text">UMA COISINHA PARA VOCÊ</p>
+    </header>
 
-        <h1>Agora é sua vez...</h1>
 
-        <p>
-            Escreve alguma coisa para mim.
-            Pode ser uma declaração, uma besteira,
-            uma mensagem feliz ou qualquer coisa
-            que esteja na sua cabeça. ❤️
-        </p>
-    </section>
+    <!-- PÁGINA -->
 
-    <!-- ÁREA PARA ESCREVER -->
-    <section class="message-box">
+    <main class="page message-page">
 
-        <textarea
-            id="mensagemContato"
-            placeholder="Escreva sua mensagem aqui... ❤️"
-            autofocus
-        ></textarea>
+        <section class="page-title">
 
-        <button
-            class="whatsapp-button"
-            onclick="enviarWhatsApp()"
-        >
-            💌 Mandar mensagem
-        </button>
+            <div class="page-emoji">
+                💌
+            </div>
 
-        <p id="aviso" class="notice"></p>
+            <p class="small-text">
+                UMA MENSAGEM PARA MIM
+            </p>
 
-    </section>
+            <h1>
+                Quero saber de você ❤️
+            </h1>
 
-    <section class="secret-message">
-        <div>🤫</div>
+            <p>
+                Escreva aqui o que você quiser.
+                Pode ser uma mensagem feliz,
+                uma declaração, uma fofoca ou
+                simplesmente alguma coisa que
+                você queira me contar. 🥹
+            </p>
 
-        <h3>Segredinho...</h3>
+        </section>
 
-        <p>
-            Só de você ter chegado até aqui,
-            já conseguiu deixar meu dia mais bonito. ❤️
-        </p>
-    </section>
 
-    <a href="index.html" class="back-button">
-        ← Voltar para o início
-    </a>
+        <!-- CAIXA DE MENSAGEM -->
 
-</main>
+        <section class="message-card">
 
-<nav class="bottom-nav">
+            <div class="message-card-top">
 
-    <a href="index.html" class="nav-item">
-        🏠
-        <span>Início</span>
-    </a>
+                <div class="message-icon">
+                    💌
+                </div>
 
-    <a href="filmes.html" class="nav-item">
-        🎬
-        <span>Filmes</span>
-    </a>
+                <div>
+                    <strong>
+                        Escreva para mim
+                    </strong>
 
-    <a href="jogos.html" class="nav-item">
-        🎮
-        <span>Jogos</span>
-    </a>
+                    <small>
+                        Sua mensagem vai para o meu WhatsApp ❤️
+                    </small>
+                </div>
 
-    <a href="contato.html" class="nav-item active">
-        💌
-        <span>Mensagem</span>
-    </a>
+            </div>
 
-</nav>
 
-<script src="script.js"></script>
+            <textarea
+                id="mensagemContato"
+                maxlength="1000"
+                placeholder="Digite sua mensagem aqui... ❤️"
+            ></textarea>
+
+
+            <div class="message-footer">
+
+                <span id="contador">
+                    0 / 1000
+                </span>
+
+            </div>
+
+
+            <button
+                class="send-message"
+                onclick="enviarWhatsApp()"
+            >
+
+                <span>
+                    💌
+                </span>
+
+                Mandar para mim
+
+            </button>
+
+
+            <p id="aviso" class="notice"></p>
+
+        </section>
+
+
+        <!-- FRASE -->
+
+        <div class="little-message">
+
+            <span>❤️</span>
+
+            <p>
+                Pode escrever qualquer coisa.
+                Eu vou gostar de receber sua mensagem. 🥹
+            </p>
+
+        </div>
+
+
+        <a href="index.html" class="back-button">
+            ← Voltar para o início
+        </a>
+
+    </main>
+
+
+    <!-- MENU INFERIOR -->
+
+    <nav class="bottom-nav">
+
+        <a href="index.html" class="nav-item">
+
+            🏠
+
+            <span>
+                Início
+            </span>
+
+        </a>
+
+
+        <a href="filmes.html" class="nav-item">
+
+            🎬
+
+            <span>
+                Filmes
+            </span>
+
+        </a>
+
+
+        <a href="jogos.html" class="nav-item">
+
+            🎮
+
+            <span>
+                Jogos
+            </span>
+
+        </a>
+
+
+        <a href="contato.html" class="nav-item active">
+
+            💌
+
+            <span>
+                Mensagem
+            </span>
+
+        </a>
+
+    </nav>
+
+
+    <script src="script.js"></script>
+
+
+    <!-- CONTADOR -->
+
+    <script>
+
+        const caixa =
+            document.getElementById("mensagemContato");
+
+        const contador =
+            document.getElementById("contador");
+
+
+        caixa.addEventListener("input", function () {
+
+            contador.textContent =
+                caixa.value.length + " / 1000";
+
+        });
+
+    </script>
+
 </body>
+
 </html>
