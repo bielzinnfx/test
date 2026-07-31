@@ -1,311 +1,799 @@
-/* ==========================================
-   SEU WHATSAPP
-========================================== */
-
-const MEU_NUMERO = "SEU_NUMERO_AQUI";
-
-
-/* ==========================================
-   ENTRAR
-========================================== */
-
-function entrar() {
-
-    const campo = document.getElementById("nome");
-    const mensagem = document.getElementById("mensagem");
-
-    if (!campo) return;
-
-    const nome = campo.value.trim();
-
-    if (nome === "") {
-
-        if (mensagem) {
-            mensagem.innerText =
-                "Ei 😂 primeiro coloca seu nome! ❤️";
-        }
-
-        return;
-    }
-
-    localStorage.setItem("nomeEspecial", nome);
-
-    window.location.href = "index.html";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-/* ==========================================
-   BOTÃO NÃO
-========================================== */
-
-function fugir() {
-
-    const botao = document.getElementById("nao");
-
-    if (!botao) return;
-
-    const largura =
-        window.innerWidth - botao.offsetWidth - 20;
-
-    const altura =
-        window.innerHeight - botao.offsetHeight - 20;
-
-    botao.style.position = "fixed";
-    botao.style.left =
-        Math.max(10, Math.random() * largura) + "px";
-
-    botao.style.top =
-        Math.max(10, Math.random() * altura) + "px";
-
-    botao.style.zIndex = "999";
+:root {
+    --pink: #ff477e;
+    --pink-light: #ff7da4;
+    --pink-dark: #e52d62;
+    --background: #0d070b;
+    --card: #ffffff0b;
+    --border: #ffffff12;
+    --text: #ffffff;
+    --muted: #bcaeb5;
 }
 
-
-/* ==========================================
-   NOME NA HOME
-========================================== */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const nome =
-        localStorage.getItem("nomeEspecial");
-
-    const display =
-        document.getElementById("nomeDisplay");
-
-    if (nome && display) {
-        display.innerText = nome;
-    }
-
-    /*
-       Se entrou diretamente em contato.html,
-       coloca o cursor na caixa de mensagem.
-    */
-
-    const caixa =
-        document.getElementById("mensagemContato");
-
-    if (caixa) {
-        setTimeout(function () {
-            caixa.focus();
-        }, 300);
-    }
-
-});
-
-
-/* ==========================================
-   BOTÃO MENSAGEM
-========================================== */
-
-function abrirContato(event) {
-
-    /*
-       Deixa o link normal funcionar.
-       O contato.html será aberto normalmente.
-    */
-
-    if (event) {
-        event.stopPropagation();
-    }
+html {
+    scroll-behavior: smooth;
 }
 
-
-/* ==========================================
-   WHATSAPP
-========================================== */
-
-function mandarParaWhatsApp(tipo, escolha) {
-
-    if (MEU_NUMERO === "SEU_NUMERO_AQUI") {
-
-        alert(
-            "Coloque seu número do WhatsApp no script.js ❤️"
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(
+            circle at top,
+            #481329 0%,
+            #180b11 35%,
+            #0d070b 75%
         );
+    min-height: 100vh;
+}
 
-        return;
-    }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-    const nome =
-        localStorage.getItem("nomeEspecial") || "Ela";
-
-    const mensagem =
-`❤️ NOSSO MATCH ❤️
-
-👩 Nome: ${nome}
-
-${tipo}: ${escolha}
-
-✨ Ela acabou de fazer uma escolha no site.`;
-
-    const link =
-        "https://wa.me/" +
-        MEU_NUMERO +
-        "?text=" +
-        encodeURIComponent(mensagem);
-
-    window.open(link, "_blank");
+button {
+    font-family: inherit;
+    cursor: pointer;
 }
 
 
-/* ==========================================
-   FILME
-========================================== */
+/* =========================
+   ENTRADA
+========================= */
 
-function escolherFilme(filme) {
+.entry-body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at top,
+            #681b3c,
+            #0d070b 65%
+        );
+}
 
-    const resultado =
-        document.getElementById("resultado");
+.entry-card {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    padding: 42px 25px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: #ffffff0b;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 25px 80px #00000090;
+    z-index: 2;
+}
 
-    if (resultado) {
+.big-heart {
+    font-size: 70px;
+    animation: pulse 1.5s infinite;
+}
 
-        resultado.innerHTML =
-            `🎬 Você escolheu <strong>${filme}</strong>! ❤️
-            <br><br>
-            Agora é só preparar a pipoca 🍿`;
+@keyframes pulse {
 
-        resultado.classList.add("show");
+    0%, 100% {
+        transform: scale(1);
     }
 
-    mandarParaWhatsApp(
-        "🎬 Filme escolhido",
-        filme
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+.mini-title {
+    margin-top: 20px;
+    color: var(--pink-light);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.entry-card h1 {
+    margin-top: 10px;
+    font-size: 38px;
+}
+
+.entry-text {
+    margin-top: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.question {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.entry-card input {
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    outline: none;
+    background: #ffffff0b;
+    color: white;
+    font-size: 16px;
+}
+
+.entry-card input::placeholder {
+    color: #95858c;
+}
+
+.entry-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.main-btn,
+.no-btn {
+    flex: 1;
+    padding: 15px;
+    border: 0;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: .25s;
+}
+
+.main-btn {
+    color: white;
+    background: linear-gradient(
+        135deg,
+        var(--pink-light),
+        var(--pink-dark)
     );
+    box-shadow: 0 10px 30px #ff477e30;
+}
+
+.no-btn {
+    color: white;
+    background: #ffffff12;
+}
+
+.main-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+#mensagem {
+    min-height: 20px;
+    margin-top: 15px;
+    color: var(--pink-light);
+}
+
+.floating-hearts span {
+    position: fixed;
+    opacity: .12;
+    font-size: 30px;
+    animation: float 8s infinite ease-in-out;
+}
+
+.floating-hearts span:nth-child(1) {
+    left: 10%;
+    top: 15%;
+}
+
+.floating-hearts span:nth-child(2) {
+    left: 80%;
+    top: 20%;
+    animation-delay: 2s;
+}
+
+.floating-hearts span:nth-child(3) {
+    left: 20%;
+    top: 75%;
+    animation-delay: 4s;
+}
+
+.floating-hearts span:nth-child(4) {
+    left: 75%;
+    top: 70%;
+    animation-delay: 1s;
+}
+
+.floating-hearts span:nth-child(5) {
+    left: 45%;
+    top: 10%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+
+    50% {
+        transform: translateY(-30px) rotate(12deg);
+    }
 }
 
 
-/* ==========================================
-   JOGO
-========================================== */
+/* =========================
+   CABEÇALHO
+========================= */
 
-function escolherJogo(jogo) {
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 70px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: #11090edd;
+    backdrop-filter: blur(18px);
+}
 
-    const resultado =
-        document.getElementById("resultadoJogo");
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
 
-    if (resultado) {
+.logo span {
+    color: var(--pink);
+}
 
-        resultado.innerHTML =
-            `🎮 Você escolheu <strong>${jogo}</strong>! ❤️
-            <br><br>
-            Então bora jogar! 🔥`;
+.header-heart {
+    width: 43px;
+    height: 43px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: white;
+    background: #ffffff0b;
+    font-size: 19px;
+    transition: .2s;
+}
 
-        resultado.classList.add("show");
-    }
+.header-heart:hover {
+    transform: scale(1.08);
+}
 
-    mandarParaWhatsApp(
-        "🎮 Jogo escolhido",
-        jogo
+
+/* =========================
+   HOME
+========================= */
+
+.home {
+    width: 92%;
+    max-width: 600px;
+    margin: auto;
+    padding: 30px 0 110px;
+}
+
+.welcome {
+    margin-bottom: 25px;
+}
+
+.small-text {
+    color: var(--pink-light);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.welcome h1 {
+    margin-top: 7px;
+    font-size: 34px;
+}
+
+.welcome h1 span {
+    color: var(--pink-light);
+}
+
+.welcome > p:last-child {
+    margin-top: 8px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+
+/* =========================
+   CARD PRINCIPAL
+========================= */
+
+.match-card {
+    height: 470px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    border: 1px solid #ffffff12;
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #8b244d,
+            #2a0d1b 65%,
+            #150910
+        );
+    box-shadow: 0 25px 70px #00000080;
+}
+
+.card-gradient {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 20%,
+            #000000dd 100%
+        );
+}
+
+.card-emoji {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 110px;
+}
+
+.card-info h2 {
+    margin-top: 10px;
+    font-size: 32px;
+}
+
+.card-info p {
+    margin-top: 6px;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.match-badge {
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 20px;
+    color: #ffd9e4;
+    background: #ffffff15;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   BOTÕES MATCH
+========================= */
+
+.match-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 25px 0 30px;
+}
+
+.circle-button {
+    width: 62px;
+    height: 62px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: #ffffff0a;
+    font-size: 24px;
+    transition: .2s;
+}
+
+.circle-button:hover {
+    transform: scale(1.1);
+}
+
+.dislike {
+    color: #ff6d6d;
+}
+
+.star {
+    color: #62c9ff;
+}
+
+.like {
+    color: var(--pink);
+}
+
+
+/* =========================
+   CARDS RÁPIDOS
+========================= */
+
+.quick-options {
+    display: grid;
+    gap: 12px;
+}
+
+.quick-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: #ffffff08;
+    transition: .25s;
+}
+
+.quick-card:hover {
+    transform: translateY(-3px);
+    border-color: #ff477e55;
+    background: #ff477e0d;
+}
+
+.quick-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: #ff477e12;
+    font-size: 25px;
+}
+
+.quick-card div:nth-child(2) {
+    flex: 1;
+}
+
+.quick-card strong {
+    display: block;
+    font-size: 16px;
+}
+
+.quick-card small {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+}
+
+.quick-card b {
+    color: #88777f;
+    font-size: 25px;
+}
+
+
+/* =========================
+   PÁGINAS
+========================= */
+
+.page {
+    width: 92%;
+    max-width: 600px;
+    margin: auto;
+    padding: 40px 0 110px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-emoji {
+    font-size: 58px;
+    margin-bottom: 15px;
+}
+
+.page-title h1 {
+    margin: 10px 0;
+    font-size: 31px;
+}
+
+.page-title > p:last-child {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+
+/* =========================
+   ESCOLHAS
+========================= */
+
+.choices {
+    display: grid;
+    gap: 13px;
+}
+
+.choice {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    text-align: left;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    color: white;
+    background: #ffffff08;
+    transition: .25s;
+}
+
+.choice:hover {
+    transform: translateY(-3px);
+    border-color: #ff477e66;
+    background: #ff477e12;
+}
+
+.choice:active {
+    transform: scale(.98);
+}
+
+.choice-icon {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 17px;
+    background: #ff477e12;
+    font-size: 27px;
+}
+
+.choice-text {
+    flex: 1;
+}
+
+.choice-text strong {
+    display: block;
+    font-size: 18px;
+}
+
+.choice-text small {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.arrow {
+    color: #8e7d85;
+    font-size: 28px;
+}
+
+
+/* =========================
+   RESULTADO
+========================= */
+
+.result {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ff477e44;
+    border-radius: 20px;
+    color: #ffe5ed;
+    background: #ff477e12;
+    line-height: 1.6;
+}
+
+.result.show {
+    display: block;
+}
+
+
+/* =========================
+   CONTATO
+========================= */
+
+.message-box {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    background: #ffffff08;
+}
+
+textarea {
+    width: 100%;
+    height: 190px;
+    resize: none;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    outline: none;
+    color: white;
+    background: #00000025;
+    line-height: 1.5;
+}
+
+textarea::placeholder {
+    color: #96868e;
+}
+
+.whatsapp-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 16px;
+    border: 0;
+    border-radius: 18px;
+    color: white;
+    background: linear-gradient(
+        135deg,
+        #25d366,
+        #128c7e
     );
+    font-weight: bold;
+    transition: .2s;
+}
+
+.whatsapp-button:hover {
+    transform: translateY(-2px);
+}
+
+.notice {
+    min-height: 20px;
+    margin-top: 12px;
+    text-align: center;
+    color: var(--pink-light);
+}
+
+.secret-message {
+    margin-top: 25px;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid #ff477e15;
+    border-radius: 23px;
+    background: #ff477e08;
+}
+
+.secret-message > div {
+    font-size: 35px;
+}
+
+.secret-message h3 {
+    margin: 10px 0;
+}
+
+.secret-message p {
+    color: var(--muted);
+    line-height: 1.6;
 }
 
 
-/* ==========================================
-   ENVIAR MENSAGEM
-========================================== */
+/* =========================
+   VOLTAR
+========================= */
 
-function enviarWhatsApp() {
-
-    const campo =
-        document.getElementById("mensagemContato");
-
-    const aviso =
-        document.getElementById("aviso");
-
-    if (!campo) return;
-
-    const mensagem =
-        campo.value.trim();
-
-    if (mensagem === "") {
-
-        if (aviso) {
-            aviso.innerText =
-                "Escreve alguma coisinha primeiro 🥺❤️";
-        }
-
-        campo.focus();
-
-        return;
-    }
-
-    if (MEU_NUMERO === "SEU_NUMERO_AQUI") {
-
-        if (aviso) {
-            aviso.innerText =
-                "Coloque seu número no script.js ❤️";
-        }
-
-        return;
-    }
-
-    const nome =
-        localStorage.getItem("nomeEspecial") || "Ela";
-
-    const texto =
-`💌 MENSAGEM DO NOSSO MATCH 💌
-
-👩 ${nome} escreveu:
-
-"${mensagem}"
-
-❤️ Mensagem enviada pelo site.`;
-
-    const link =
-        "https://wa.me/" +
-        MEU_NUMERO +
-        "?text=" +
-        encodeURIComponent(texto);
-
-    window.open(link, "_blank");
-
-    if (aviso) {
-        aviso.innerText =
-            "WhatsApp aberto! Agora é só enviar ❤️";
-    }
+.back-button {
+    display: block;
+    width: max-content;
+    margin: 30px auto 0;
+    padding: 12px 18px;
+    border-radius: 20px;
+    color: var(--pink-light);
+    background: #ffffff08;
 }
 
 
-/* ==========================================
+/* =========================
+   MENU INFERIOR
+========================= */
+
+.bottom-nav {
+    position: fixed;
+    z-index: 60;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 76px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    background: #120a0fee;
+    backdrop-filter: blur(18px);
+}
+
+.nav-item {
+    min-width: 65px;
+    text-align: center;
+    color: #897a81;
+    font-size: 21px;
+    transition: .2s;
+}
+
+.nav-item span {
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+}
+
+.nav-item.active {
+    color: var(--pink);
+}
+
+
+/* =========================
    MODAL
-========================================== */
+========================= */
 
-function mostrarAmor() {
+.modal {
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #000000c9;
+}
 
-    const modal =
-        document.getElementById("modal");
+.modal.show {
+    display: flex;
+}
 
-    if (modal) {
-        modal.classList.add("show");
-    }
+.modal-box {
+    width: 100%;
+    max-width: 380px;
+    padding: 30px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 27px;
+    background: #1c0e16;
+    box-shadow: 0 25px 70px #000;
+}
+
+.modal-heart {
+    font-size: 60px;
+    animation: pulse 1.5s infinite;
+}
+
+.modal-box h2 {
+    margin: 12px 0;
+}
+
+.modal-box p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.modal-box button {
+    margin-top: 20px;
+    padding: 13px 25px;
+    border-radius: 25px;
+    color: white;
+    background: var(--pink);
+    font-weight: bold;
 }
 
 
-function fecharModal() {
+/* =========================
+   CELULAR
+========================= */
 
-    const modal =
-        document.getElementById("modal");
+@media (max-width: 500px) {
 
-    if (modal) {
-        modal.classList.remove("show");
+    .entry-card {
+        padding: 35px 20px;
     }
+
+    .entry-card h1 {
+        font-size: 33px;
+    }
+
+    .match-card {
+        height: 430px;
+    }
+
+    .card-emoji {
+        font-size: 90px;
+    }
+
+    .welcome h1 {
+        font-size: 29px;
+    }
+
+    .page-title h1 {
+        font-size: 28px;
+    }
+
 }
-
-
-/* ==========================================
-   FECHAR MODAL
-========================================== */
-
-document.addEventListener("click", function (event) {
-
-    const modal =
-        document.getElementById("modal");
-
-    if (
-        modal &&
-        event.target === modal
-    ) {
-        modal.classList.remove("show");
-    }
-
-});
