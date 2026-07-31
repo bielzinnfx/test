@@ -3,38 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uma surpresa ❤️</title>
+    <title>Nosso Match ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<body class="entry-body">
 
-<body class="center-page">
+    <div class="floating-hearts">
+        <span>❤️</span><span>💕</span><span>✨</span>
+        <span>💗</span><span>♡</span>
+    </div>
 
-    <div class="hearts"></div>
+    <main class="entry-card">
+        <div class="big-heart">❤️</div>
 
-    <main class="card entrance">
-        <div class="heart">❤️</div>
+        <p class="mini-title">UMA PEQUENA SURPRESA</p>
 
-        <h1>Antes de entrar...</h1>
+        <h1>Nosso Match</h1>
 
-        <p>Preciso confirmar uma coisinha importante.</p>
+        <p class="entry-text">
+            Antes de entrar nesse cantinho,
+            preciso descobrir quem está chegando... 👀
+        </p>
 
-        <h2>Você é a garota mais incrível desse site? 👀</h2>
+        <div class="question">
+            Você é a pessoa mais especial daqui? 🥹
+        </div>
 
         <input
             type="text"
             id="nome"
             placeholder="Digite seu nome ❤️"
+            autocomplete="off"
         >
 
-        <div class="buttons">
-            <button onclick="entrar()">SIM 😍</button>
-            <button id="nao" onmouseover="fugir()">NÃO 😏</button>
+        <div class="entry-buttons">
+            <button class="main-btn" onclick="entrar()">
+                SIM 😍
+            </button>
+
+            <button
+                class="no-btn"
+                id="nao"
+                onmouseover="fugir()"
+                onclick="fugir()">
+                NÃO 😏
+            </button>
         </div>
 
         <p id="mensagem"></p>
     </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>
