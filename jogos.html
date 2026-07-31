@@ -1,153 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Jogo de hoje 🎮</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-    <div class="logo">🎮 Jogo de hoje</div>
+<header class="header">
+    <a href="index.html" class="logo">
+        Nosso <span>Match</span> ❤️
+    </a>
 
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="filmes.html">Filmes 🎬</a>
-        <a href="jogos.html">Jogos 🎮</a>
-        <a href="contato.html">Mensagem 💌</a>
-    </nav>
+    <button class="header-heart" onclick="mostrarAmor()">💌</button>
 </header>
 
 <main class="page">
 
-    <div class="page-title">
+    <section class="page-title">
+        <div class="page-emoji">🎮</div>
 
-        <span>🎮</span>
+        <p class="small-text">ESCOLHA DE HOJE</p>
 
-        <h1>Qual vai ser nossa diversão?</h1>
+        <h1>O que vamos jogar?</h1>
 
         <p>
-            Escolhe um jogo para hoje. 😌❤️
+            Agora quem manda é você. 😌❤️
         </p>
+    </section>
 
-    </div>
+    <section class="choices">
 
-    <section class="options">
+        <button class="choice" onclick="escolherJogo('Free Fire 🔥')">
+            <div class="choice-icon">🔥</div>
 
-        <button class="option" onclick="escolherJogo('Free Fire 🔥')">
-            <span>🔥</span>
-            <strong>Free Fire</strong>
-            <small>Hoje tem capa? 👀</small>
+            <div class="choice-text">
+                <strong>Free Fire</strong>
+                <small>Hoje tem capa? 👀</small>
+            </div>
+
+            <span class="arrow">›</span>
         </button>
 
-        <button class="option" onclick="escolherJogo('Roblox 🎮')">
-            <span>🧱</span>
-            <strong>Roblox</strong>
-            <small>Vamos descobrir alguma coisa aleatória.</small>
+        <button class="choice" onclick="escolherJogo('Roblox 🎮')">
+            <div class="choice-icon">🧱</div>
+
+            <div class="choice-text">
+                <strong>Roblox</strong>
+                <small>Vamos achar alguma coisa aleatória.</small>
+            </div>
+
+            <span class="arrow">›</span>
         </button>
 
-        <button class="option" onclick="escolherJogo('Minecraft ⛏️')">
-            <span>⛏️</span>
-            <strong>Minecraft</strong>
-            <small>Construir nossa casinha? 🥹</small>
+        <button class="choice" onclick="escolherJogo('Minecraft ⛏️')">
+            <div class="choice-icon">⛏️</div>
+
+            <div class="choice-text">
+                <strong>Minecraft</strong>
+                <small>Vamos construir nossa casinha? 🥹</small>
+            </div>
+
+            <span class="arrow">›</span>
         </button>
 
-        <button class="option" onclick="escolherJogo('Outro jogo ❤️')">
-            <span>🎁</span>
-            <strong>Outro</strong>
-            <small>Você escolhe e eu acompanho.</small>
+        <button class="choice" onclick="escolherJogo('Outro jogo 🎁')">
+            <div class="choice-icon">🎁</div>
+
+            <div class="choice-text">
+                <strong>Outro jogo</strong>
+                <small>Você escolhe, eu acompanho.</small>
+            </div>
+
+            <span class="arrow">›</span>
         </button>
 
     </section>
 
     <div id="resultadoJogo" class="result"></div>
 
-    <a href="index.html" class="back">← Voltar</a>
-
+    <a href="index.html" class="back-button">
+        ← Voltar para o início
+    </a>
 </main>
 
-<script src="script.js"></script>
+<nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+        🏠
+        <span>Início</span>
+    </a>
 
-</body>
-</html><!DOCTYPE html>
-<html lang="pt-BR">
+    <a href="filmes.html" class="nav-item">
+        🎬
+        <span>Filmes</span>
+    </a>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <a href="jogos.html" class="nav-item active">
+        🎮
+        <span>Jogos</span>
+    </a>
 
-    <title>Jogo de hoje 🎮</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-    <div class="logo">🎮 Jogo de hoje</div>
-
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="filmes.html">Filmes 🎬</a>
-        <a href="jogos.html">Jogos 🎮</a>
-        <a href="contato.html">Mensagem 💌</a>
-    </nav>
-</header>
-
-<main class="page">
-
-    <div class="page-title">
-
-        <span>🎮</span>
-
-        <h1>Qual vai ser nossa diversão?</h1>
-
-        <p>
-            Escolhe um jogo para hoje. 😌❤️
-        </p>
-
-    </div>
-
-    <section class="options">
-
-        <button class="option" onclick="escolherJogo('Free Fire 🔥')">
-            <span>🔥</span>
-            <strong>Free Fire</strong>
-            <small>Hoje tem capa? 👀</small>
-        </button>
-
-        <button class="option" onclick="escolherJogo('Roblox 🎮')">
-            <span>🧱</span>
-            <strong>Roblox</strong>
-            <small>Vamos descobrir alguma coisa aleatória.</small>
-        </button>
-
-        <button class="option" onclick="escolherJogo('Minecraft ⛏️')">
-            <span>⛏️</span>
-            <strong>Minecraft</strong>
-            <small>Construir nossa casinha? 🥹</small>
-        </button>
-
-        <button class="option" onclick="escolherJogo('Outro jogo ❤️')">
-            <span>🎁</span>
-            <strong>Outro</strong>
-            <small>Você escolhe e eu acompanho.</small>
-        </button>
-
-    </section>
-
-    <div id="resultadoJogo" class="result"></div>
-
-    <a href="index.html" class="back">← Voltar</a>
-
-</main>
+    <a href="contato.html" class="nav-item">
+        💌
+        <span>Mensagem</span>
+    </a>
+</nav>
 
 <script src="script.js"></script>
-
 </body>
 </html>
