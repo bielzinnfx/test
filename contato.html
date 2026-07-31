@@ -6,37 +6,24 @@
     <title>Mensagem 💌</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="header">
-
     <a href="index.html" class="logo">
         Nosso <span>Match</span> ❤️
     </a>
 
-    <button class="header-heart" onclick="mostrarAmor()">
-        💌
-    </button>
-
+    <button class="header-heart" onclick="mostrarAmor()">💌</button>
 </header>
-
 
 <main class="page">
 
     <section class="page-title">
+        <div class="page-emoji">💌</div>
 
-        <div class="page-emoji">
-            💌
-        </div>
+        <p class="small-text">UMA COISINHA PARA VOCÊ</p>
 
-        <p class="small-text">
-            UMA COISINHA PARA VOCÊ
-        </p>
-
-        <h1>
-            Agora é sua vez...
-        </h1>
+        <h1>Agora é sua vez...</h1>
 
         <p>
             Escreve alguma coisa para mim.
@@ -44,55 +31,44 @@
             uma mensagem feliz ou qualquer coisa
             que esteja na sua cabeça. ❤️
         </p>
-
     </section>
 
-
+    <!-- ÁREA PARA ESCREVER -->
     <section class="message-box">
 
         <textarea
             id="mensagemContato"
             placeholder="Escreva sua mensagem aqui... ❤️"
+            autofocus
         ></textarea>
 
         <button
             class="whatsapp-button"
-            onclick="enviarWhatsApp()">
-
-            <span>💌</span>
-            Mandar mensagem
-
+            onclick="enviarWhatsApp()"
+        >
+            💌 Mandar mensagem
         </button>
 
         <p id="aviso" class="notice"></p>
 
     </section>
 
-
     <section class="secret-message">
+        <div>🤫</div>
 
-        <div>
-            🤫
-        </div>
-
-        <h3>
-            Segredinho...
-        </h3>
+        <h3>Segredinho...</h3>
 
         <p>
             Só de você ter chegado até aqui,
             já conseguiu deixar meu dia mais bonito. ❤️
         </p>
-
     </section>
-
 
     <a href="index.html" class="back-button">
         ← Voltar para o início
     </a>
 
 </main>
-
 
 <nav class="bottom-nav">
 
@@ -118,8 +94,6 @@
 
 </nav>
 
-
 <script src="script.js"></script>
-
 </body>
 </html>
