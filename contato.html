@@ -1,78 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Nosso cantinho ❤️</title>
-
+    <title>Mensagem 💌</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <div class="logo">❤️ Nosso Cantinho</div>
+<header class="header">
 
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="filmes.html">Filmes 🎬</a>
-        <a href="jogos.html">Jogos 🎮</a>
-        <a href="contato.html">Mensagem 💌</a>
-    </nav>
+    <a href="index.html" class="logo">
+        Nosso <span>Match</span> ❤️
+    </a>
+
+    <button class="header-heart" onclick="mostrarAmor()">
+        💌
+    </button>
+
 </header>
 
-<main class="home">
 
-    <div class="hero">
+<main class="page">
 
-        <span class="small-heart">♡</span>
+    <section class="page-title">
 
-        <h1>Oi, linda ❤️</h1>
+        <div class="page-emoji">
+            💌
+        </div>
 
-        <p id="saudacao">
-            Preparei esse cantinho especialmente para você.
+        <p class="small-text">
+            UMA COISINHA PARA VOCÊ
         </p>
+
+        <h1>
+            Agora é sua vez...
+        </h1>
 
         <p>
-            Aqui você pode escolher o que vamos fazer hoje,
-            assistir ou simplesmente deixar uma mensagem para mim. 🥰
+            Escreve alguma coisa para mim.
+            Pode ser uma declaração, uma besteira,
+            uma mensagem feliz ou qualquer coisa
+            que esteja na sua cabeça. ❤️
         </p>
-
-    </div>
-
-    <section class="cards">
-
-        <a href="filmes.html" class="menu-card">
-            <span>🎬</span>
-            <h2>Filme de hoje</h2>
-            <p>Escolha o que vamos assistir juntinhos.</p>
-        </a>
-
-        <a href="jogos.html" class="menu-card">
-            <span>🎮</span>
-            <h2>Jogo de hoje</h2>
-            <p>Escolha nossa diversão de hoje.</p>
-        </a>
-
-        <a href="contato.html" class="menu-card">
-            <span>💌</span>
-            <h2>Uma mensagem</h2>
-            <p>Deixe alguma coisa feliz para mim.</p>
-        </a>
 
     </section>
 
-    <div class="love-message">
-        <p>✨ "Algumas pessoas deixam o dia mais bonito só por existirem." ✨</p>
-    </div>
+
+    <section class="message-box">
+
+        <textarea
+            id="mensagemContato"
+            placeholder="Escreva sua mensagem aqui... ❤️"
+        ></textarea>
+
+        <button
+            class="whatsapp-button"
+            onclick="enviarWhatsApp()">
+
+            <span>💌</span>
+            Mandar mensagem
+
+        </button>
+
+        <p id="aviso" class="notice"></p>
+
+    </section>
+
+
+    <section class="secret-message">
+
+        <div>
+            🤫
+        </div>
+
+        <h3>
+            Segredinho...
+        </h3>
+
+        <p>
+            Só de você ter chegado até aqui,
+            já conseguiu deixar meu dia mais bonito. ❤️
+        </p>
+
+    </section>
+
+
+    <a href="index.html" class="back-button">
+        ← Voltar para o início
+    </a>
 
 </main>
 
-<footer>
-    Feito com carinho ❤️
-</footer>
+
+<nav class="bottom-nav">
+
+    <a href="index.html" class="nav-item">
+        🏠
+        <span>Início</span>
+    </a>
+
+    <a href="filmes.html" class="nav-item">
+        🎬
+        <span>Filmes</span>
+    </a>
+
+    <a href="jogos.html" class="nav-item">
+        🎮
+        <span>Jogos</span>
+    </a>
+
+    <a href="contato.html" class="nav-item active">
+        💌
+        <span>Mensagem</span>
+    </a>
+
+</nav>
+
 
 <script src="script.js"></script>
 
