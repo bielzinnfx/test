@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Filme de hoje 🎬</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🎬 Filme de hoje</div>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="filmes.html">Filmes 🎬</a>
+        <a href="jogos.html">Jogos 🎮</a>
+        <a href="contato.html">Mensagem 💌</a>
+    </nav>
+</header>
+
+<main class="page">
+
+    <div class="page-title">
+        <span>🍿</span>
+
+        <h1>O que vamos assistir hoje?</h1>
+
+        <p>
+            Escolhe uma opção. Eu prometo não reclamar da escolha. 😂❤️
+        </p>
+    </div>
+
+    <section class="options">
+
+        <button class="option" onclick="escolherFilme('Romance ❤️')">
+            <span>💕</span>
+            <strong>Romance</strong>
+            <small>Para ficar bem juntinhos.</small>
+        </button>
+
+        <button class="option" onclick="escolherFilme('Comédia 😂')">
+            <span>😂</span>
+            <strong>Comédia</strong>
+            <small>Hoje é dia de rir até doer a barriga.</small>
+        </button>
+
+        <button class="option" onclick="escolherFilme('Terror 😱')">
+            <span>👻</span>
+            <strong>Terror</strong>
+            <small>Depois não vale se esconder atrás de mim. 👀</small>
+        </button>
+
+        <button class="option" onclick="escolherFilme('Surpresa 🎁')">
+            <span>🎁</span>
+            <strong>Você escolhe</strong>
+            <small>Quero saber qual é sua escolha.</small>
+        </button>
+
+    </section>
+
+    <div id="resultado" class="result"></div>
+
+    <a href="index.html" class="back">← Voltar</a>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
