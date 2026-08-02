@@ -1,42 +1,58 @@
-// ========================================
-// COLOQUE SEU NÚMERO AQUI
-// ========================================
+/* =====================================================
+   CONFIGURAÇÃO
+===================================================== */
 
-// Exemplo: 5548999999999
-// Sem +, espaços, parênteses ou traços.
+/*
+   COLOQUE SEU NÚMERO DO WHATSAPP AQUI.
 
-const MEU_NUMERO = "5549999308964";
+   Exemplo:
+   5548991234567
+
+   Regras:
+   - Começa com 55
+   - Depois DDD
+   - Depois número
+   - NÃO coloque +
+   - NÃO coloque espaços
+   - NÃO coloque parênteses
+   - NÃO coloque traços
+*/
+
+const MEU_NUMERO = "SEU_NUMERO_AQUI";
 
 
-// ========================================
-// ENTRAR NO SITE
-// ========================================
+/* =====================================================
+   ENTRADA
+===================================================== */
 
 function entrar() {
 
-    const nome = document.getElementById("nome");
+    const campo = document.getElementById("nome");
     const mensagem = document.getElementById("mensagem");
 
-    if (!nome.value.trim()) {
+    if (!campo) return;
 
-        mensagem.innerText =
-            "Ei 😭 primeiro coloca seu nome! ❤️";
+    const nome = campo.value.trim();
+
+    if (nome === "") {
+
+        if (mensagem) {
+            mensagem.innerText =
+                "Ei 😂 primeiro coloca seu nome! ❤️";
+        }
 
         return;
     }
 
-    localStorage.setItem(
-        "nomeEspecial",
-        nome.value.trim()
-    );
+    localStorage.setItem("nomeEspecial", nome);
 
     window.location.href = "index.html";
 }
 
 
-// ========================================
-// BOTÃO NÃO FUGINDO
-// ========================================
+/* =====================================================
+   BOTÃO NÃO FUGINDO
+===================================================== */
 
 function fugir() {
 
@@ -44,68 +60,90 @@ function fugir() {
 
     if (!botao) return;
 
-    const maxX =
+    const largura =
         window.innerWidth - botao.offsetWidth - 20;
 
-    const maxY =
+    const altura =
         window.innerHeight - botao.offsetHeight - 20;
 
-    const x = Math.max(10, Math.random() * maxX);
-    const y = Math.max(10, Math.random() * maxY);
+    const x =
+        Math.max(10, Math.random() * largura);
+
+    const y =
+        Math.max(10, Math.random() * altura);
 
     botao.style.position = "fixed";
     botao.style.left = x + "px";
     botao.style.top = y + "px";
+    botao.style.zIndex = "999";
 }
 
 
-// ========================================
-// MOSTRAR NOME NA PÁGINA INICIAL
-// ========================================
+/* =====================================================
+   PEGAR NOME SALVO
+===================================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const nome =
-        localStorage.getItem("nomeEspecial");
+        const nome =
+            localStorage.getItem("nomeEspecial");
 
-    const saudacao =
-        document.getElementById("saudacao");
+        const display =
+            document.getElementById("nomeDisplay");
 
-    if (nome && saudacao) {
+        if (nome && display) {
+            display.innerText = nome;
+        }
 
-        saudacao.innerHTML =
-            `Oi, <strong>${nome}</strong> ❤️<br>
-            Preparei esse cantinho especialmente para você.`;
     }
+);
 
-});
 
+/* =====================================================
+   FUNÇÃO PRINCIPAL DO WHATSAPP
+===================================================== */
 
-// ========================================
-// FUNÇÃO PARA MANDAR ESCOLHA AO WHATSAPP
-// ========================================
+function mandarParaWhatsApp(tipo, escolha) {
 
-function mandarEscolha(tipo, escolha) {
+    if (MEU_NUMERO === "SEU_NUMERO_AQUI") {
+
+        alert(
+            "Você ainda não colocou seu número no script.js ❤️"
+        );
+
+        return;
+    }
 
     const nome =
         localStorage.getItem("nomeEspecial") || "Ela";
 
-    const texto =
-        `❤️ *Nosso Match*%0A%0A` +
-        `👩 ${nome}%0A` +
-        `${tipo}: *${escolha}*%0A%0A` +
-        `Ela acabou de fazer uma escolha no site 😍`;
+
+    const mensagem =
+`❤️ NOSSO MATCH ❤️
+
+👩 Nome: ${nome}
+
+${tipo}: ${escolha}
+
+✨ Ela acabou de fazer uma escolha no site.`;
+
 
     const link =
-        `https://wa.me/${MEU_NUMERO}?text=${texto}`;
+        "https://wa.me/" +
+        MEU_NUMERO +
+        "?text=" +
+        encodeURIComponent(mensagem);
+
 
     window.open(link, "_blank");
 }
 
 
-// ========================================
-// ESCOLHA DE FILME
-// ========================================
+/* =====================================================
+   ESCOLHER FILME
+===================================================== */
 
 function escolherFilme(filme) {
 
@@ -115,20 +153,29 @@ function escolherFilme(filme) {
     if (resultado) {
 
         resultado.innerHTML =
-            `🎬 Você escolheu <strong>${filme}</strong>! ❤️<br><br>
-             Agora é só preparar a pipoca 🍿`;
+            `
+            🎬 Você escolheu
+            <strong>${filme}</strong>! ❤️
+            <br><br>
+            Agora é só preparar a pipoca 🍿
+            `;
 
-        resultado.style.display = "block";
+        resultado.classList.add("show");
     }
 
-    // MANDA PARA SEU WHATSAPP
-    mandarEscolha("🎬 Filme", filme);
+
+    // MANDA A ESCOLHA PARA SEU WHATSAPP
+
+    mandarParaWhatsApp(
+        "🎬 Filme escolhido",
+        filme
+    );
 }
 
 
-// ========================================
-// ESCOLHA DE JOGO
-// ========================================
+/* =====================================================
+   ESCOLHER JOGO
+===================================================== */
 
 function escolherJogo(jogo) {
 
@@ -138,20 +185,29 @@ function escolherJogo(jogo) {
     if (resultado) {
 
         resultado.innerHTML =
-            `🎮 Você escolheu <strong>${jogo}</strong>! ❤️<br><br>
-             Então bora jogar! 🔥`;
+            `
+            🎮 Você escolheu
+            <strong>${jogo}</strong>! ❤️
+            <br><br>
+            Então bora jogar! 🔥
+            `;
 
-        resultado.style.display = "block";
+        resultado.classList.add("show");
     }
 
-    // MANDA PARA SEU WHATSAPP
-    mandarEscolha("🎮 Jogo", jogo);
+
+    // MANDA A ESCOLHA PARA SEU WHATSAPP
+
+    mandarParaWhatsApp(
+        "🎮 Jogo escolhido",
+        jogo
+    );
 }
 
 
-// ========================================
-// MENSAGEM DA PÁGINA DE CONTATO
-// ========================================
+/* =====================================================
+   ENVIAR MENSAGEM PELO WHATSAPP
+===================================================== */
 
 function enviarWhatsApp() {
 
@@ -161,30 +217,112 @@ function enviarWhatsApp() {
     const aviso =
         document.getElementById("aviso");
 
+    if (!campo) return;
+
     const mensagem =
         campo.value.trim();
 
-    if (!mensagem) {
 
-        aviso.innerText =
-            "Escreve alguma coisinha primeiro 🥺❤️";
+    if (mensagem === "") {
+
+        if (aviso) {
+
+            aviso.innerText =
+                "Escreve alguma coisinha primeiro 🥺❤️";
+        }
 
         return;
     }
 
+
+    if (MEU_NUMERO === "SEU_NUMERO_AQUI") {
+
+        if (aviso) {
+
+            aviso.innerText =
+                "Você precisa colocar seu número no script.js ❤️";
+        }
+
+        return;
+    }
+
+
     const nome =
         localStorage.getItem("nomeEspecial") || "Ela";
 
+
     const texto =
-        `❤️ *Mensagem do Nosso Match*%0A%0A` +
-        `👩 ${nome} escreveu:%0A%0A` +
-        `"${mensagem}"`;
+`💌 MENSAGEM DO NOSSO MATCH 💌
+
+👩 ${nome} escreveu:
+
+"${mensagem}"
+
+❤️ Mensagem enviada pelo site.`;
+
 
     const link =
-        `https://wa.me/${MEU_NUMERO}?text=${texto}`;
+        "https://wa.me/" +
+        MEU_NUMERO +
+        "?text=" +
+        encodeURIComponent(texto);
+
 
     window.open(link, "_blank");
 
-    aviso.innerText =
-        "Mensagem preparada para enviar ❤️";
+
+    if (aviso) {
+
+        aviso.innerText =
+            "WhatsApp aberto! Agora é só enviar ❤️";
+    }
 }
+
+
+/* =====================================================
+   MODAL ROMÂNTICO
+===================================================== */
+
+function mostrarAmor() {
+
+    const modal =
+        document.getElementById("modal");
+
+    if (modal) {
+        modal.classList.add("show");
+    }
+}
+
+
+function fecharModal() {
+
+    const modal =
+        document.getElementById("modal");
+
+    if (modal) {
+        modal.classList.remove("show");
+    }
+}
+
+
+/* =====================================================
+   FECHAR MODAL CLICANDO FORA
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const modal =
+            document.getElementById("modal");
+
+        if (
+            modal &&
+            event.target === modal
+        ) {
+
+            modal.classList.remove("show");
+        }
+
+    }
+);
