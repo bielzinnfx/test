@@ -18,7 +18,7 @@
    - NÃO coloque traços
 */
 
-const MEU_NUMERO = "SEU_NUMERO_AQUI";
+const MEU_NUMERO = "554999202228";
 
 
 /* =====================================================
