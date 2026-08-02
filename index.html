@@ -6,22 +6,29 @@
     <title>Nosso Match ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="header">
-    <a href="index.html" class="logo">
+
+    <div class="logo">
         Nosso <span>Match</span> ❤️
-    </a>
+    </div>
 
     <button class="header-heart" onclick="mostrarAmor()">
         💌
     </button>
+
 </header>
+
 
 <main class="home">
 
     <section class="welcome">
-        <p class="small-text">✨ SEU CANTINHO ESPECIAL</p>
+
+        <p class="small-text">
+            ✨ Seu cantinho especial
+        </p>
 
         <h1>
             Oi, <span id="nomeDisplay">linda</span> ❤️
@@ -31,77 +38,125 @@
             Preparei uma coisinha especial para você.
             Escolhe o que vamos fazer hoje 👇
         </p>
+
     </section>
 
+
     <section class="match-card">
+
         <div class="card-gradient">
-            <div class="card-emoji">💕</div>
+
+            <div class="card-emoji">
+                💕
+            </div>
 
             <div class="card-info">
+
                 <span class="match-badge">
                     ✨ MATCH ESPECIAL
                 </span>
 
-                <h2>Você + Eu</h2>
+                <h2>
+                    Você + Eu
+                </h2>
 
                 <p>
                     Uma combinação que eu escolheria
                     mil vezes. 🥹❤️
                 </p>
+
             </div>
+
         </div>
+
     </section>
 
+
     <div class="match-buttons">
-        <button class="circle-button dislike" onclick="mostrarAmor()">❌</button>
-        <button class="circle-button star" onclick="mostrarAmor()">⭐</button>
-        <button class="circle-button like" onclick="mostrarAmor()">❤️</button>
+
+        <button
+            class="circle-button dislike"
+            onclick="mostrarAmor()">
+            ❌
+        </button>
+
+        <button
+            class="circle-button star"
+            onclick="mostrarAmor()">
+            ⭐
+        </button>
+
+        <button
+            class="circle-button like"
+            onclick="mostrarAmor()">
+            ❤️
+        </button>
+
     </div>
+
 
     <section class="quick-options">
 
         <a href="filmes.html" class="quick-card">
-            <div class="quick-icon">🎬</div>
+
+            <div class="quick-icon">
+                🎬
+            </div>
 
             <div>
                 <strong>Filme de hoje</strong>
-                <small>Escolha o que vamos assistir 🍿</small>
+                <small>
+                    Escolha o que vamos assistir 🍿
+                </small>
             </div>
 
             <b>›</b>
+
         </a>
 
+
         <a href="jogos.html" class="quick-card">
-            <div class="quick-icon">🎮</div>
+
+            <div class="quick-icon">
+                🎮
+            </div>
 
             <div>
                 <strong>Jogo de hoje</strong>
-                <small>Escolha nossa diversão 🎮</small>
+                <small>
+                    Escolha nossa diversão 🎮
+                </small>
             </div>
 
             <b>›</b>
+
         </a>
 
-        <!-- BOTÃO CORRIGIDO -->
-        <a
-            href="contato.html"
-            class="quick-card"
-            onclick="abrirContato(event)"
-        >
-            <div class="quick-icon">💌</div>
+
+        <a href="contato.html" class="quick-card">
+
+            <div class="quick-icon">
+                💌
+            </div>
 
             <div>
                 <strong>Mensagem para mim</strong>
-                <small>Quero saber o que você está pensando ❤️</small>
+                <small>
+                    Quero saber o que você está pensando ❤️
+                </small>
             </div>
 
             <b>›</b>
+
         </a>
 
     </section>
+
 </main>
 
+
 <nav class="bottom-nav">
+
     <a href="index.html" class="nav-item active">
         🏠
         <span>Início</span>
@@ -117,19 +172,21 @@
         <span>Jogos</span>
     </a>
 
-    <a
-        href="contato.html"
-        class="nav-item"
-        onclick="abrirContato(event)"
-    >
+    <a href="contato.html" class="nav-item">
         💌
         <span>Mensagem</span>
     </a>
+
 </nav>
 
+
 <div id="modal" class="modal">
+
     <div class="modal-box">
-        <div class="modal-heart">❤️</div>
+
+        <div class="modal-heart">
+            ❤️
+        </div>
 
         <h2>Deu Match! 🥰</h2>
 
@@ -141,9 +198,13 @@
         <button onclick="fecharModal()">
             Amei ❤️
         </button>
+
     </div>
+
 </div>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>
